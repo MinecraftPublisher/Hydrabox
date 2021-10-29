@@ -14,7 +14,7 @@ let Hydra = function() {
   /* END Define Hydrabox */
 
   /* BEGIN Hydrabox stylesheet */
-  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: 5px; left: 5px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; style: display: none; } </style>')
+  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; style: display: none; } </style>')
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
