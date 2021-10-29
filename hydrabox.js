@@ -3,8 +3,6 @@
  * The ultimate utility bookmarklet.
  */
 
-if(Hydra || window.Hydra)
-  break;
 let Hydra = function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
