@@ -3,6 +3,8 @@
  * The ultimate utility bookmarklet.
  */
 
+if(Hydra || window.Hydra)
+  break;
 let Hydra = function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
@@ -14,7 +16,7 @@ let Hydra = function() {
   /* END Define Hydrabox */
 
   /* BEGIN Hydrabox stylesheet */
-  Hydrabox.write('<style> hydra { position: fixed; bottom: 0px; left: 0px; min-width: 100px; min-height: 30px; style: display: none; } </style>')
+  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: -1px; left: -1px; padding-left: 10px; padding-bottom: 10px; min-width: 500px; min-height: 150px; style: display: none; } </style>')
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
