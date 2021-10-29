@@ -3,7 +3,7 @@
  * The ultimate utility bookmarklet.
  */
 
-let Hydra = function() {
+let Hydra = (function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
   Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
@@ -27,11 +27,22 @@ let Hydra = function() {
   document.body.appendChild(Hydrabox)
   /* END Attach Hydrabox */
 
+  /* BEGIN Define HydraStorage */
+  const HydraStorage = {}
+  HydraStorage.set = (function(name, value) {
+    console.log('Dummy command')
+  })
+  HydraStorage.get = (function(name) {
+    console.log('Dummy command')
+  })
+  /* END Define HydraStorage */
+  
   Hydra = {}
   return {
     'version': '0.1-BETA',
     'Hydrabox': Hydrabox,
-    'toast': function(text = "...", duration = 5000) {
+    'HydraStorage': HydraStorage,
+    'toast': (function(text = "...", duration = 5000) {
       Toastify({
         text: text,
         duration: duration,
@@ -41,8 +52,8 @@ let Hydra = function() {
         stopOnFocus: true,
         style: { background: 'linear-gradient(to right, #00b09b, #96c93d)' }
       }).showToast()
-    }
+    })
   }
-}
+})
 
 window.Hydra = Hydra()
