@@ -29,6 +29,9 @@ let Hydra = (function() {
 
   /* BEGIN Define HydraStorage */
   const HydraStorage = {}
+  Hydrastorage.fingerprint = (async function(){
+    return await (await fetch('https://hydrabox.phazor.ir/API/Fingerprint/?session')).text()
+  })
   HydraStorage.set = (function(name, value) {
     console.log('Dummy command')
   })
