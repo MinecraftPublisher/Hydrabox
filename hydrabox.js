@@ -3,7 +3,7 @@
  * The ultimate utility bookmarklet.
  */
 
-window.Hydra = function() {
+const Hydra = function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
   Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
