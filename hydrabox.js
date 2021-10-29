@@ -14,16 +14,7 @@ const Hydra = function() {
   /* END Define Hydrabox */
 
   /* BEGIN Hydrabox stylesheet */
-  Hydrabox.write('<style>')
-  Hydrabox.write('hydra {')
-  Hydrabox.write('position: fixed;')
-  Hydrabox.write('bottom: 0px;')
-  Hydrabox.write('left: 0px;')
-  Hydrabox.write('min-width: 100px;')
-  Hydrabox.write('min-height: 30px;')
-  Hydrabox.write('style: display: none;')
-  Hydrabox.write('}')
-  Hydrabox.write('</style>')
+  Hydrabox.write('<style> hydra { position: fixed; bottom: 0px; left: 0px; min-width: 100px; min-height: 30px; style: display: none; } </style>')
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
