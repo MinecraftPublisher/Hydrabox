@@ -27,6 +27,7 @@ const Hydra = function() {
   document.body.appendChild(Hydrabox)
   /* END Attach Hydrabox */
 
+  Hydra = {}
   return {
     'version': '0.1-BETA',
     'Hydrabox': Hydrabox,
@@ -43,3 +44,5 @@ const Hydra = function() {
     }
   }
 }
+
+window.Hydra = Hydra()
