@@ -33,7 +33,7 @@ let Hydra = (function() {
   HydraAPI.fingerprint = (async function(){
     return await (await fetch('https://hydrabox.phazor.ir/API/Fingerprint/?session')).text()
   })
-  HydraAPI.set = (async function(name, value) {
+  HydraAPI.set = (async function(value) {
     const fingerprint = await HydraAPI.fingerprint()
     if(fingerprint === 'NULL') {
       Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
@@ -46,7 +46,7 @@ let Hydra = (function() {
       return response
     }
   })
-  HydraAPI.get = (async function(name) {
+  HydraAPI.get = (async function() {
     const fingerprint = await HydraAPI.fingerprint()
     if(fingerprint === 'NULL') {
       Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
