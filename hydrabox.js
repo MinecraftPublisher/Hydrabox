@@ -3,7 +3,7 @@
  * The ultimate utility bookmarklet.
  */
 
-let Hydra = (async function() {
+window.ProtoHydra = (async function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
   Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
@@ -77,4 +77,4 @@ let Hydra = (async function() {
   }
 })
 
-Hydra().then((hydra) => window.Hydra = hydra)
+window.ProtoHydra().then((hydra) => window.Hydra = hydra)
