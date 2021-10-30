@@ -39,10 +39,16 @@ let Hydra = (function() {
       Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
       return 'NULL'
     } else {
+      var formBody = [];
+      for (var property in {'fingerprint': fingerprint, 'data': JSON.stringify(value) }) {
+        var encodedKey = encodeURIComponent(property);
+        var encodedValue = encodeURIComponent(details[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+      }
+      formBody = formBody.join("&");
       const response = await (await fetch('https://hydrabox.phazor.ir/API/Storage/write.php', {
         method: 'POST',
-        body: `fingerprint=${fingerprint}
-data=${JSON.stringify(value)}`
+        body: formBody
       })).text()
       return response
     }
