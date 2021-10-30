@@ -39,8 +39,9 @@ let Hydra = (function() {
       Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
       return 'NULL'
     } else {
+      var details = {'fingerprint': fingerprint, 'data': JSON.stringify(value) }
       var formBody = [];
-      for (var property in {'fingerprint': fingerprint, 'data': JSON.stringify(value) }) {
+      for (var property in details) {
         var encodedKey = encodeURIComponent(property);
         var encodedValue = encodeURIComponent(details[property]);
         formBody.push(encodedKey + "=" + encodedValue);
