@@ -20,9 +20,9 @@ let Hydra = (function() {
 
   /* BEGIN Define libraries */
   Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
-  Hydrabox.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>')
-  Hydrabox.write('<script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>')
-  Hydrabox.write('<script type="text/javascript" src="https://unpkg.com/hotkeys-js@3.8.7/dist/hotkeys.min.js"></script>')
+  import('https://cdn.jsdelivr.net/npm/toastify-js')
+  import('https://unpkg.com/jquery@3.3.1/dist/jquery.min.js')
+  import('https://unpkg.com/hotkeys-js/dist/hotkeys.min.js')
   /* END Define libraries */
 
   /* BEGIN Attach Hydrabox */
