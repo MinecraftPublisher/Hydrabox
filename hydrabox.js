@@ -15,16 +15,18 @@ let Hydra = (function() {
   /* END Define Hydrabox */
 
   /* BEGIN Hydrabox stylesheet */
-  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; display: none; } hydrawarning { color: yellow; } </style>')
+  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; } hydrawarning { color: yellow; } </style>')
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
   Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
   Hydrabox.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>')
-  Hydrabox.write('<script type="test/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>')
+  Hydrabox.write('<script type="text/javascript" src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>')
+  Hydrabox.write('<script type="text/javascript" src="https://unpkg.com/hotkeys-js@3.8.7/dist/hotkeys.min.js"></script>')
   /* END Define libraries */
 
   /* BEGIN Attach Hydrabox */
+  Hydrabox.hide()
   document.body.appendChild(Hydrabox)
   /* END Attach Hydrabox */
 
@@ -57,6 +59,16 @@ let Hydra = (function() {
     }
   })
   /* END Define HydraStorage */
+  
+  /* BEGIN Define event listeners */
+  hotkeys('alt+.', function(event, handler) {
+    if(Hydrabox.get('style') === 'display: none;') {
+      Hydrabox.show()
+    } else {
+      Hydrabox.hide()
+    }
+  })
+  /* END Define event listeners */
   
   Hydra = {}
   return {
