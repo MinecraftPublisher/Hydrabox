@@ -9,12 +9,13 @@ let Hydra = (function() {
   Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
   Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' '); }
   Hydrabox.get = function(name) { Hydrabox.getAttribute(name); }
-  Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;') }
-  Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;') }
+  Hydrabox.warning = function(data) { Hydrabox.write('<hydrawarning>' + data + '</hydrawarning>'); }
+  Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;'); }
+  Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;'); }
   /* END Define Hydrabox */
 
   /* BEGIN Hydrabox stylesheet */
-  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; style: display: none; } </style>')
+  Hydrabox.write('<style> hydra { background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; display: none; } hydrawarning { color: yellow; } </style>')
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
@@ -27,16 +28,33 @@ let Hydra = (function() {
   document.body.appendChild(Hydrabox)
   /* END Attach Hydrabox */
 
-  /* BEGIN Define HydraStorage */
-  const HydraStorage = {}
-  Hydrastorage.fingerprint = (async function(){
+  /* BEGIN Define HydraAPI */
+  const HydraAPI = {}
+  HydraAPI.fingerprint = (async function(){
     return await (await fetch('https://hydrabox.phazor.ir/API/Fingerprint/?session')).text()
   })
-  HydraStorage.set = (function(name, value) {
-    console.log('Dummy command')
+  HydraAPI.set = (async function(name, value) {
+    const fingerprint = await HydraAPI.fingerprint()
+    if(fingerprint === 'NULL') {
+      Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
+      return 'NULL'
+    } else {
+      const response = await (await fetch('https://hydrabox.phazor.ir/API/Storage/set.php', {
+        method: 'POST',
+        body: JSON.stringify(value)
+      })).text()
+      return response
+    }
   })
-  HydraStorage.get = (function(name) {
-    console.log('Dummy command')
+  HydraAPI.get = (async function(name) {
+    const fingerprint = await HydraAPI.fingerprint()
+    if(fingerprint === 'NULL') {
+      Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
+      return 'NULL'
+    } else {
+      const response = await (await fetch('https://hydrabox.phazor.ir/API/Storage/get.php?fingerprint=' + fingerprint))
+      return response
+    }
   })
   /* END Define HydraStorage */
   
@@ -44,7 +62,7 @@ let Hydra = (function() {
   return {
     'version': '0.1-BETA',
     'Hydrabox': Hydrabox,
-    'HydraStorage': HydraStorage,
+    'API': HydraAPI,
     'toast': (function(text = "...", duration = 5000) {
       Toastify({
         text: text,
