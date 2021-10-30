@@ -6,3 +6,6 @@ Simple drag the following text onto your bookmarks bar: [Hydrabox](javascript:fe
 
 ## How to activate it?
 Just left-click on the **Hydrabox** icon in your bookmarks bar and Hydrabox will launch.
+
+## API
+The API reference can be found [here](https://hydrabox.phazor.ir/API/).
