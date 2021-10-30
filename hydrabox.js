@@ -36,7 +36,7 @@ let Hydra = (async function() {
   HydraAPI.set = (async function(value) {
     const fingerprint = await HydraAPI.fingerprint()
     if(fingerprint === 'NULL') {
-      Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
+      Hydrabox.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
       return 'NULL'
     } else {
       const response = await (await fetch('https://hydrabox.phazor.ir/API/Storage/write.php?fingerprint=' + fingerprint, {
@@ -49,7 +49,7 @@ let Hydra = (async function() {
   HydraAPI.get = (async function() {
     const fingerprint = await HydraAPI.fingerprint()
     if(fingerprint === 'NULL') {
-      Hydra.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
+      Hydrabox.warning('Hydra was unable to detect your fingerprint, Please click <a href="https://hydrabox.phazor.ir/API/Fingerprint/">Here</a> to set it.')
       return 'NULL'
     } else {
       const response = await (await fetch('https://hydrabox.phazor.ir/API/Storage/read.php?fingerprint=' + fingerprint)).text()
@@ -59,13 +59,14 @@ let Hydra = (async function() {
   /* END Define HydraStorage */
   
   /* BEGIN Define event listeners */
-  hotkeys('alt+.', function(event, handler) {
+  function HydraKeyEvent(event, handler) {
     if(Hydrabox.get('style') === 'display: none; ') {
       Hydrabox.show()
     } else {
       Hydrabox.hide()
     }
-  })
+  }
+  hotkeys('alt+.', HydraKeyEvent)
   /* END Define event listeners */
   
   Hydra = {}
