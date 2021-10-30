@@ -8,7 +8,7 @@ let Hydra = (async function() {
   const Hydrabox = document.createElement('hydra')
   Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
   Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' '); }
-  Hydrabox.get = function(name) { Hydrabox.getAttribute(name); }
+  Hydrabox.get = function(name) { return Hydrabox.getAttribute(name); }
   Hydrabox.warning = function(data) { Hydrabox.write('<hydrawarning>' + data + '</hydrawarning>') }
   Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;'); }
   Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;'); }
@@ -61,10 +61,8 @@ let Hydra = (async function() {
   /* BEGIN Define event listeners */
   hotkeys('alt+.', function(event, handler) {
     if(Hydrabox.get('style') === 'display: none; ') {
-      console.log('Show')
       Hydrabox.show()
     } else {
-      console.log('Hide')
       Hydrabox.hide()
     }
   })
