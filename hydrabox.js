@@ -9,7 +9,7 @@ let Hydra = (async function() {
   Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
   Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' '); }
   Hydrabox.get = function(name) { Hydrabox.getAttribute(name); }
-  Hydrabox.warning = function(data) { window.Hydra.toast('WARNING: ' + data) }
+  Hydrabox.warning = function(data) { Hydrabox.write('<hydrawarning>' + data + '</hydrawarning>') }
   Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;'); }
   Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;'); }
   /* END Define Hydrabox */
@@ -19,8 +19,6 @@ let Hydra = (async function() {
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
-  Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
-  await import('https://cdn.jsdelivr.net/npm/toastify-js')
   await import('https://unpkg.com/jquery@3.3.1/dist/jquery.min.js')
   await import('https://unpkg.com/hotkeys-js/dist/hotkeys.min.js')
   /* END Define libraries */
@@ -74,18 +72,7 @@ let Hydra = (async function() {
   return {
     'version': '0.1-BETA',
     'Hydrabox': Hydrabox,
-    'API': HydraAPI,
-    'toast': (function(text = "...", duration = 5000) {
-      Toastify({
-        text: text,
-        duration: duration,
-        close: true,
-        gravity: 'bottom',
-        position: 'right',
-        stopOnFocus: true,
-        style: { background: 'linear-gradient(to right, #00b09b, #96c93d)' }
-      }).showToast()
-    })
+    'API': HydraAPI
   }
 })
 
