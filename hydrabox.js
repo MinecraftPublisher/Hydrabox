@@ -61,8 +61,10 @@ let Hydra = (async function() {
   /* BEGIN Define event listeners */
   hotkeys('alt+.', function(event, handler) {
     if(Hydrabox.get('style') === 'display: none; ') {
+      console.log('Show')
       Hydrabox.show()
     } else {
+      console.log('Hide')
       Hydrabox.hide()
     }
   })
