@@ -41,7 +41,8 @@ let Hydra = (function() {
     } else {
       const response = await (await fetch('https://hydrabox.phazor.ir/API/Storage/write.php', {
         method: 'POST',
-        body: JSON.stringify(value)
+        body: `fingerprint=${fingerprint}
+data=${JSON.stringify(value)}`
       })).text()
       return response
     }
