@@ -58,6 +58,11 @@ window.ProtoHydra = (async function() {
   })
   /* END Define HydraStorage */
   
+  /* BEGIN Define HydraDaphne */
+  Hydrabox.write('<style>pet { height: 50px; max-width: 30px; }</style>')
+  Hydrabox.write('<pet style=" transform: translateY(-50px); background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAL9JREFUOE9jZKAQMBKj/8GDB/8VFBSwqiVoAEgzyBKyDIBpJssAZM0wb2JzBVYvYNOMyxW4wuD/7YOrwBazypuB/M/w4MEDMB/dFRgGwGz//fAU3ACYF+at2sbQVJaFogfDgLquaf+TwrwYQAaAbAeBA+euwWP73p0HKIZgNUBJRQEleYA0wcQGxgCQc2CuIOgCkGJQOKB7A2YIiEYOSKzR6BcaC06+BqaWDBdOHweHB4iNHgMgcYJ5gVBmo9gAAJXOXhF+XMKlAAAAAElFTkSuQmCC);"></pet>')
+  /* END Define HydraDaphne */
+  
   /* BEGIN Define event listeners */
   function HydraKeyEvent(event, handler) {
     if(Hydrabox.get('style') === 'display: none; ') {
