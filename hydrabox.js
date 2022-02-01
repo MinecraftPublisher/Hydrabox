@@ -19,7 +19,7 @@ window.ProtoHydra = (async function() {
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
-  await import('https://cdn.jsdelivr.net/npm/toastify-js')
+  await import('https://raw.githubusercontent.com/apvarun/toastify-js/master/src/toastify-es.js')
   Hydrabox.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
   Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "right", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
   await import('https://unpkg.com/jquery@3.3.1/dist/jquery.min.js')
@@ -75,7 +75,7 @@ window.ProtoHydra = (async function() {
   window.Hydra = {}
   Hydrabox.Toast('HydraBox has successfully loaded.')
   return {
-    'version': '0.5.82',
+    'version': '0.5.83',
     'Hydrabox': Hydrabox,
     'API': HydraAPI
   }
