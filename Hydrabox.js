@@ -6,13 +6,19 @@
 window.ProtoHydra = (async function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
-  Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
-  Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' '); }
-  Hydrabox.get = function(name) { return Hydrabox.getAttribute(name); }
+  Hydrabox.write = function(text) { Hydrabox.innerHTML += text }
+  Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' ') }
+  Hydrabox.get = function(name) { return Hydrabox.getAttribute(name) }
   Hydrabox.warning = function(data) { Hydrabox.write('<hydrawarning>' + data + '</hydrawarning>') }
-  Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;'); }
-  Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;'); }
+  Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;') }
+  Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;') }
   /* END Define Hydrabox */
+  
+  /* BEGIN Toastify */
+  Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
+  Hydrabox.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>')
+  Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "left", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
+  /* END Toastify */
 
   /* BEGIN Hydrabox stylesheet */
   Hydrabox.write('<style> hydra { z-index: 10000000; background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; } hydrawarning { color: yellow; } </style>')
