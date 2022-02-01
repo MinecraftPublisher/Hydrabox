@@ -13,19 +13,18 @@ window.ProtoHydra = (async function() {
   Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;') }
   Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;') }
   /* END Define Hydrabox */
-  
-  /* BEGIN Toastify */
-  Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
-  Hydrabox.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>')
-  Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "right", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
-  /* END Toastify */
 
   /* BEGIN Hydrabox stylesheet */
   Hydrabox.write('<style> hydra { z-index: 10000000; background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; } hydrawarning { color: yellow; } </style>')
   /* END Hydrabox stylesheet */
 
   /* BEGIN Define libraries */
+  await import('https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css')
+  await import('https://cdn.jsdelivr.net/npm/toastify-js')
+  Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "right", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
+  
   await import('https://unpkg.com/jquery@3.3.1/dist/jquery.min.js')
+  
   await import('https://unpkg.com/hotkeys-js/dist/hotkeys.min.js')
   /* END Define libraries */
 
