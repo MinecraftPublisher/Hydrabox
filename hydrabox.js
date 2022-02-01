@@ -6,13 +6,19 @@
 window.ProtoHydra = (async function() {
   /* BEGIN Define Hydrabox */
   const Hydrabox = document.createElement('hydra')
-  Hydrabox.write = function(text) { Hydrabox.innerHTML += text; }
-  Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' '); }
-  Hydrabox.get = function(name) { return Hydrabox.getAttribute(name); }
+  Hydrabox.write = function(text) { Hydrabox.innerHTML += text }
+  Hydrabox.set = function(name, value) { Hydrabox.setAttribute(name, value + ' ') }
+  Hydrabox.get = function(name) { return Hydrabox.getAttribute(name) }
   Hydrabox.warning = function(data) { Hydrabox.write('<hydrawarning>' + data + '</hydrawarning>') }
-  Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;'); }
-  Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;'); }
+  Hydrabox.hide = function() { Hydrabox.set('style', 'display: none;') }
+  Hydrabox.show = function() { Hydrabox.set('style', 'display: allow;') }
   /* END Define Hydrabox */
+  
+  /* BEGIN Toastify */
+  Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
+  Hydrabox.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>')
+  Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "right", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
+  /* END Toastify */
 
   /* BEGIN Hydrabox stylesheet */
   Hydrabox.write('<style> hydra { z-index: 10000000; background-color: grey; border-radius: 10px; position: fixed; bottom: 15px; left: 15px; padding-left: 10px; padding-bottom: 10px; min-width: 200px; min-height: 60px; } hydrawarning { color: yellow; } </style>')
@@ -58,11 +64,6 @@ window.ProtoHydra = (async function() {
   })
   /* END Define HydraStorage */
   
-  /* BEGIN Define HydraDaphne */
-  Hydrabox.write('<style>pet { height: 50px; max-width: 30px; }</style>')
-  Hydrabox.write('<pet style=" transform: translateY(-50px); background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAL9JREFUOE9jZKAQMBKj/8GDB/8VFBSwqiVoAEgzyBKyDIBpJssAZM0wb2JzBVYvYNOMyxW4wuD/7YOrwBazypuB/M/w4MEDMB/dFRgGwGz//fAU3ACYF+at2sbQVJaFogfDgLquaf+TwrwYQAaAbAeBA+euwWP73p0HKIZgNUBJRQEleYA0wcQGxgCQc2CuIOgCkGJQOKB7A2YIiEYOSKzR6BcaC06+BqaWDBdOHweHB4iNHgMgcYJ5gVBmo9gAAJXOXhF+XMKlAAAAAElFTkSuQmCC);"></pet>')
-  /* END Define HydraDaphne */
-  
   /* BEGIN Define event listeners */
   function HydraKeyEvent(event, handler) {
     if(Hydrabox.get('style') === 'display: none; ') {
@@ -74,9 +75,10 @@ window.ProtoHydra = (async function() {
   hotkeys('alt+.', HydraKeyEvent)
   /* END Define event listeners */
   
-  Hydra = {}
+  window.Hydra = {}
+  Hydrabox.Toast('HydraBox has successfully loaded.')
   return {
-    'version': '0.5.78',
+    'version': '0.5.80',
     'Hydrabox': Hydrabox,
     'API': HydraAPI
   }
