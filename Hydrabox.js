@@ -17,7 +17,7 @@ window.ProtoHydra = (async function() {
   /* BEGIN Toastify */
   Hydrabox.write('<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">')
   Hydrabox.write('<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>')
-  Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "left", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
+  Hydrabox.Toast = function(text) { Toastify({ text: text, duration: 3000, close: true, gravity: "bottom", position: "right", stopOnFocus: true, style: {background: "linear-gradient(to right, #00b09b, #96c93d)",}, onClick: function(){}}).showToast() }
   /* END Toastify */
 
   /* BEGIN Hydrabox stylesheet */
@@ -75,9 +75,10 @@ window.ProtoHydra = (async function() {
   hotkeys('alt+.', HydraKeyEvent)
   /* END Define event listeners */
   
-  Hydra = {}
+  window.Hydra = {}
+  Hydrabox.Toast('HydraBox has successfully loaded.')
   return {
-    'version': '0.5.78',
+    'version': '0.5.80',
     'Hydrabox': Hydrabox,
     'API': HydraAPI
   }
